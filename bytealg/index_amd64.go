@@ -4,7 +4,7 @@
 
 package bytealg
 
-import "internal/cpu"
+import "github.com/SandwichDev/go-internals/cpu"
 
 const MaxBruteForce = 64
 

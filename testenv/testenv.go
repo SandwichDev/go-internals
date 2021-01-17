@@ -13,7 +13,6 @@ package testenv
 import (
 	"errors"
 	"flag"
-	"internal/cfg"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -22,6 +21,8 @@ import (
 	"strings"
 	"sync"
 	"testing"
+
+	"github.com/SandwichDev/go-internals/cfg"
 )
 
 // Builder reports the name of the builder running this test

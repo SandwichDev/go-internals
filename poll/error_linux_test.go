@@ -6,9 +6,10 @@ package poll_test
 
 import (
 	"errors"
-	"internal/poll"
 	"os"
 	"syscall"
+
+	"github.com/SandwichDev/go-internals/poll"
 )
 
 func badStateFile() (*os.File, error) {

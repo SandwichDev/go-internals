@@ -7,10 +7,11 @@
 package execenv
 
 import (
-	"internal/syscall/windows"
 	"syscall"
 	"unicode/utf16"
 	"unsafe"
+
+	"github.com/SandwichDev/go-internals/syscall/windows"
 )
 
 // Default will return the default environment

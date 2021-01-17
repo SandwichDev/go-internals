@@ -3,7 +3,7 @@
 package registry
 
 import (
-	"internal/syscall/windows/sysdll"
+	"github.com/SandwichDev/go-internals/syscall/windows/sysdll"
 	"syscall"
 	"unsafe"
 )

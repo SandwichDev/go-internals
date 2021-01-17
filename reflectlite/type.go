@@ -7,8 +7,9 @@
 package reflectlite
 
 import (
-	"internal/unsafeheader"
 	"unsafe"
+
+	"github.com/SandwichDev/go-internals/unsafeheader"
 )
 
 // Type is the representation of a Go type.
@@ -68,7 +69,7 @@ type Type interface {
 }
 
 /*
- * These data structures are known to the compiler (../../cmd/internal/gc/reflect.go).
+ * These data structures are known to the compiler (../../cmd/github.com/SandwichDev/go-internals/gc/reflect.go).
  * A few are known to ../runtime/type.go to convey to debuggers.
  * They are also known to ../runtime/type.go.
  */
@@ -111,8 +112,8 @@ const (
 // available in the memory directly following the rtype value.
 //
 // tflag values must be kept in sync with copies in:
-//	cmd/compile/internal/gc/reflect.go
-//	cmd/link/internal/ld/decodesym.go
+//	cmd/compile/github.com/SandwichDev/go-internals/gc/reflect.go
+//	cmd/link/github.com/SandwichDev/go-internals/ld/decodesym.go
 //	runtime/type.go
 type tflag uint8
 

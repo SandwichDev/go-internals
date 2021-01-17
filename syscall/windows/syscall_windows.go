@@ -5,11 +5,12 @@
 package windows
 
 import (
-	"internal/unsafeheader"
 	"sync"
 	"syscall"
 	"unicode/utf16"
 	"unsafe"
+
+	"github.com/SandwichDev/go-internals/unsafeheader"
 )
 
 // UTF16PtrToString is like UTF16ToString, but takes *uint16

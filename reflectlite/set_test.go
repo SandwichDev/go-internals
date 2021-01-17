@@ -8,9 +8,10 @@ import (
 	"bytes"
 	"go/ast"
 	"go/token"
-	. "internal/reflectlite"
 	"io"
 	"testing"
+
+	. "github.com/SandwichDev/go-internals/reflectlite"
 )
 
 func TestImplicitSetConversion(t *testing.T) {

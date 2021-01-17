@@ -6,14 +6,15 @@ package poll
 
 import (
 	"errors"
-	"internal/race"
-	"internal/syscall/windows"
 	"io"
 	"sync"
 	"syscall"
 	"unicode/utf16"
 	"unicode/utf8"
 	"unsafe"
+
+	"github.com/SandwichDev/go-internals/race"
+	"github.com/SandwichDev/go-internals/syscall/windows"
 )
 
 var (
