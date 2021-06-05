@@ -113,7 +113,15 @@ func CopyFileRange(dst, src *FD, remain int64) (written int64, handled bool, err
 			return 0, false, nil
 		case nil:
 			if n == 0 {
-				// src is at EOF, which means we are done.
+				// If we did not read any bytes at all,
+				// then this file may be in a file system
+				// where copy_file_range silently fails.
+				// https://lore.kernel.org/linux-fsdevel/20210126233840.GG4626@dread.disaster.area/T/#m05753578c7f7882f6e9ffe01f981bc223edef2b0
+				if written == 0 {
+					return 0, false, nil
+				}
+				// Otherwise src is at EOF, which means
+				// we are done.
 				return written, true, nil
 			}
 			remain -= n
@@ -137,7 +145,7 @@ func copyFileRange(dst, src *FD, max int) (written int64, err error) {
 	// values for off_in and off_out. For the system call, this means
 	// "use and update the file offsets". That is why we must acquire
 	// locks for both file descriptors (and why this whole machinery is
-	// in the github.com/SandwichDev/go-internals/poll package to begin with).
+	// in the internal/poll package to begin with).
 	if err := dst.writeLock(); err != nil {
 		return 0, err
 	}

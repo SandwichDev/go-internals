@@ -8,10 +8,11 @@ package goroot
 
 import (
 	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"sync"
+
+	exec "github.com/SandwichDev/go-internals/execabs"
 )
 
 // IsStandardPackage reports whether path is a standard package,

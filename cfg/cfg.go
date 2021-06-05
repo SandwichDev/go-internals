@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package cfg holds configuration shared by the Go command and github.com/SandwichDev/go-internals/testenv.
+// Package cfg holds configuration shared by the Go command and internal/testenv.
 // Definitions that don't need to be exposed outside of cmd/go should be in
-// cmd/go/github.com/SandwichDev/go-internals/cfg instead of this package.
+// cmd/go/internal/cfg instead of this package.
 package cfg
 
 // KnownEnv is a list of environment variables that affect the operation
@@ -58,6 +58,7 @@ const KnownEnv = `
 	GOSUMDB
 	GOTMPDIR
 	GOTOOLDIR
+	GOVCS
 	GOWASM
 	GO_EXTLINK_ENABLED
 	PKG_CONFIG

@@ -69,7 +69,7 @@ type Type interface {
 }
 
 /*
- * These data structures are known to the compiler (../../cmd/github.com/SandwichDev/go-internals/gc/reflect.go).
+ * These data structures are known to the compiler (../../cmd/internal/gc/reflect.go).
  * A few are known to ../runtime/type.go to convey to debuggers.
  * They are also known to ../runtime/type.go.
  */
@@ -112,8 +112,8 @@ const (
 // available in the memory directly following the rtype value.
 //
 // tflag values must be kept in sync with copies in:
-//	cmd/compile/github.com/SandwichDev/go-internals/gc/reflect.go
-//	cmd/link/github.com/SandwichDev/go-internals/ld/decodesym.go
+//	cmd/compile/internal/gc/reflect.go
+//	cmd/link/internal/ld/decodesym.go
 //	runtime/type.go
 type tflag uint8
 
@@ -384,6 +384,44 @@ const (
 	kindGCProg      = 1 << 6 // Type.gc points to GC program
 	kindMask        = (1 << 5) - 1
 )
+
+// String returns the name of k.
+func (k Kind) String() string {
+	if int(k) < len(kindNames) {
+		return kindNames[k]
+	}
+	return kindNames[0]
+}
+
+var kindNames = []string{
+	Invalid:       "invalid",
+	Bool:          "bool",
+	Int:           "int",
+	Int8:          "int8",
+	Int16:         "int16",
+	Int32:         "int32",
+	Int64:         "int64",
+	Uint:          "uint",
+	Uint8:         "uint8",
+	Uint16:        "uint16",
+	Uint32:        "uint32",
+	Uint64:        "uint64",
+	Uintptr:       "uintptr",
+	Float32:       "float32",
+	Float64:       "float64",
+	Complex64:     "complex64",
+	Complex128:    "complex128",
+	Array:         "array",
+	Chan:          "chan",
+	Func:          "func",
+	Interface:     "interface",
+	Map:           "map",
+	Ptr:           "ptr",
+	Slice:         "slice",
+	String:        "string",
+	Struct:        "struct",
+	UnsafePointer: "unsafe.Pointer",
+}
 
 func (t *uncommonType) methods() []method {
 	if t.mcount == 0 {

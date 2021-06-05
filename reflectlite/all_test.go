@@ -778,7 +778,7 @@ func TestImportPath(t *testing.T) {
 		{TypeOf(map[string]int{}), ""},
 		{TypeOf((*error)(nil)).Elem(), ""},
 		{TypeOf((*Point)(nil)), ""},
-		{TypeOf((*Point)(nil)).Elem(), "github.com/SandwichDev/go-internals/reflectlite_test"},
+		{TypeOf((*Point)(nil)).Elem(), "internal/reflectlite_test"},
 	}
 	for _, test := range tests {
 		if path := test.t.PkgPath(); path != test.path {

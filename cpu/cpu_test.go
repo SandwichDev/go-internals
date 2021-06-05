@@ -16,9 +16,10 @@ import (
 )
 
 func TestMinimalFeatures(t *testing.T) {
+	// TODO: maybe do MustSupportFeatureDectection(t) ?
 	if runtime.GOARCH == "arm64" {
 		switch runtime.GOOS {
-		case "linux", "android":
+		case "linux", "android", "darwin":
 		default:
 			t.Skipf("%s/%s is not supported", runtime.GOOS, runtime.GOARCH)
 		}
@@ -35,6 +36,10 @@ func MustHaveDebugOptionsSupport(t *testing.T) {
 	if !DebugOptions {
 		t.Skipf("skipping test: cpu feature options not supported by OS")
 	}
+}
+
+func MustSupportFeatureDectection(t *testing.T) {
+	// TODO: add platforms that do not have CPU feature detection support.
 }
 
 func runDebugOptionsTest(t *testing.T, test string, options string) {
@@ -59,6 +64,7 @@ func runDebugOptionsTest(t *testing.T, test string, options string) {
 }
 
 func TestDisableAllCapabilities(t *testing.T) {
+	MustSupportFeatureDectection(t)
 	runDebugOptionsTest(t, "TestAllCapabilitiesDisabled", "cpu.all=off")
 }
 
